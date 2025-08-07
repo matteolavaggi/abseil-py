@@ -5,7 +5,45 @@
 [![Overall downloads](https://pepy.tech/badge/absl-py)](https://pepy.tech/project/absl-py)
 [![Last month downloads](https://pepy.tech/badge/absl-py/month)](https://pepy.tech/project/absl-py)
 
-# Abseil Python Common Libraries
+# Abseil Python Common Libraries (Custom Fork)
+
+> **Fork Notice**: This is a custom fork of [abseil/abseil-py](https://github.com/abseil/abseil-py) with modified log file naming.
+
+## Custom Modifications
+
+### Log File Extension Fix
+- **Issue**: Original Abseil creates log files with non-standard naming: `app.hostname.user.log.INFO.timestamp.pid`
+- **Fix**: Modified to append `.log` extension: `app.hostname.user.log.INFO.timestamp.pid.log`
+- **File**: `absl/logging/__init__.py:900` - Added `.log` to basename format string
+
+### Keeping Up with Upstream Updates
+
+When Google releases new versions of abseil-py:
+
+```bash
+# 1. Fetch latest from upstream
+git fetch upstream
+
+# 2. Rebase your changes
+git rebase upstream/main
+
+# 3. If conflicts occur, apply the patch:
+git apply add-log-extension.patch
+```
+
+**Patch file creation** (run once):
+```bash
+git format-patch -1 HEAD --stdout > add-log-extension.patch
+```
+
+### Installation
+```bash
+pip install git+https://github.com/matteolavaggi/abseil-py.git
+```
+
+---
+
+# Original README
 
 This repository is a collection of Python library code for building Python
 applications. The code is collected from Google's own Python code base, and has

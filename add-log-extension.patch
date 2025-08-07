@@ -1,0 +1,26 @@
+From 0c645b746ff1395dcd25d82076f3100037eab3bd Mon Sep 17 00:00:00 2001
+From: matteolavaggi <matteo.lavaggi@pineappleitaly.com>
+Date: Thu, 7 Aug 2025 08:17:50 +0200
+Subject: [PATCH] Changed log format to include .log at the endo of the file
+ for better compatibility with log editor and viewer
+
+---
+ absl/logging/__init__.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/absl/logging/__init__.py b/absl/logging/__init__.py
+index b0920d8..8b3f4a3 100644
+--- a/absl/logging/__init__.py
++++ b/absl/logging/__init__.py
+@@ -897,7 +897,7 @@ class PythonHandler(logging.StreamHandler):
+     actual_log_dir, file_prefix, symlink_prefix = find_log_dir_and_names(
+         program_name=program_name, log_dir=log_dir)
+ 
+-    basename = '%s.INFO.%s.%d' % (
++    basename = '%s.INFO.%s.%d.log' % (
+         file_prefix,
+         time.strftime('%Y%m%d-%H%M%S', time.localtime(time.time())),
+         os.getpid())
+-- 
+2.49.0.windows.1
+
