@@ -897,7 +897,7 @@ class PythonHandler(logging.StreamHandler):
     actual_log_dir, file_prefix, symlink_prefix = find_log_dir_and_names(
         program_name=program_name, log_dir=log_dir)
 
-    basename = '%s.INFO.%s.%d' % (
+    basename = '%s.INFO.%s.%d.log' % (
         file_prefix,
         time.strftime('%Y%m%d-%H%M%S', time.localtime(time.time())),
         os.getpid())
